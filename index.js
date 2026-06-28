@@ -19,6 +19,12 @@ function buscarUsuarioPorEmail(email) {
   return usuarios.find(u => u.email === email) || null;
 }
 
+function buscarUsuarioPorNome(nome) {
+  return usuarios.filter(u =>
+    u.nome.toLowerCase().includes(nome.toLowerCase())
+  );
+}
+
 function listarUsuarios() {
   if (usuarios.length === 0) {
     console.log("Nenhum usuário cadastrado.");
@@ -54,6 +60,11 @@ console.log(adicionarUsuario("Ana Duplicada", "ana@email.com"));
 console.log("\n>> Buscando por email:");
 console.log(buscarUsuarioPorEmail("bruno@email.com"));
 console.log(buscarUsuarioPorEmail("naoexiste@email.com"));
+
+console.log("\n>> Buscando por nome (parcial, case-insensitive):");
+console.log(buscarUsuarioPorNome("ana"));
+console.log(buscarUsuarioPorNome("MELO"));
+console.log(buscarUsuarioPorNome("xyz"));
 
 console.log("\n>> Removendo Bruno:");
 console.log(removerUsuario("bruno@email.com"));
